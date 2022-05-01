@@ -6,8 +6,8 @@ eng <- c(90, 95, 100, 80)
 df1 <- data.frame(name, gender, kor, eng)
 df2 <- data.frame(matrix(seq(1,9), nrow=3))
 df3 <- data.frame(gender = c('f', 'm', 'f', 'm'),
-                  score = c(90, 100, 80, 95),
-                  stringsAsFactors = TRUE)
+score = c(90, 100, 80, 95),
+stringsAsFactors = TRUE)
 str(df3)
 
 
@@ -21,9 +21,9 @@ v1 <- df[1, 3]
 df1 <- df[2,]
 v2 <- df[,'name']  # df$name
 v3 <- df$name
-df2 <- df[1]  # 1ë²? ?—´
+df2 <- df[1]  # 1ï¿½? ?ï¿½ï¿½
 df3 <- df['name']
-v4 <- df[[1]]  # 1ë²? ?—´, vector
+v4 <- df[[1]]  # 1ï¿½? ?ï¿½ï¿½, vector
 df4 <- df[seq(1, 3), c(1, 2)]
 df5 <- df[,2:4]
 df6 <- df[1:3]
@@ -40,6 +40,29 @@ df3 <- subset(df2, select=-score)
 df4 <- subset(df1, subset=(salary>=5000), select=-score)
 df5 <- subset(df2, select=c(pname, dept, salary))
 colnames(df5)[2] <- 'department'
+
+rm(list=ls())
+df = read.csv('./data/easySample3.csv', fileEncoding='UTF-8-BOM')
+df1 = df[, c(2, 4, 8, 9)]
+df1$score = c(90, 80, 50, 70, 100, 95, 85, 70, 95, 75)
+df2 = subset(df1, subset=(salary>=5000))
+print(df2)
+
+df3 = subset(df2, select=-score)
+df3
+
+df4 = subset(df1, subset=(salary>=5000), select=-score)
+df4
+
+df5 = subset(df2, select=c(pname, dept, salary))
+df5
+
+colnames(df5)[2] = 'department'
+df5
+
+
+
+
 
 
 

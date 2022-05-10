@@ -18,3 +18,4 @@ r2 <- ddply(r1, 'year', function(x) {
 
 r3 <- ddply(r1, .(year, count>20), summarise, mean.count=mean(count))
 r4 <- ddply(r1, .(year), transform, total.count=sum(count))
+

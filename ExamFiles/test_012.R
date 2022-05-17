@@ -19,3 +19,16 @@ r2 <- ddply(r1, 'year', function(x) {
 r3 <- ddply(r1, .(year, count>20), summarise, mean.count=mean(count))
 r4 <- ddply(r1, .(year), transform, total.count=sum(count))
 
+rm(list=ls())
+set.seed(1)
+r1 <- data.frame(year=rep(2018:2021, each=5), count=round(runif(20,1,40)))
+r2 <- ddply(r1, 'year', function(x) {
+  mean.count = mean(x$count)
+  sd.count = sd(x$count)
+  cv=sd.count/mean.count
+  data.frame(m.count=mean.count, s.count=sd.count, cv.count=cv)
+})
+
+r3 <- ddply(r1, .(year, count>20), summarise, mean.count=mean(count))
+r4 <- ddply(r1, .(year), transform, total.count=sum(count))
+
